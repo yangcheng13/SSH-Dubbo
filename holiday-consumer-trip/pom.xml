@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.apex</groupId>
+		<artifactId>holiday</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../holiday</relativePath>
+	</parent>
+	<artifactId>holiday-consumer-trip</artifactId>
+	<packaging>war</packaging>
+	<name>holiday-consumer-trip Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+	<dependencies>
+		<dependency>
+			<groupId>com.apex</groupId>
+			<artifactId>holiday-api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+	</dependencies>
+	<build>
+		<finalName>holiday-consumer-trip</finalName>
+	</build>
+</project>

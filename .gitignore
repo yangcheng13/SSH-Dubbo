@@ -1,0 +1,10 @@
+.DS_Store
+holiday-api/.settings/
+.settings/
+holiday-api/target/
+holiday-consumer-trip/target/
+holiday-dao/target/
+holiday-domain/target/
+holiday-provider/target/
+ysk-common/target/
+target/
