@@ -12,7 +12,7 @@ public class HolidayTestDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private String appId;
-    private Long addTime = System.currentTimeMillis();
+    private String addTime;
     private String city;
     private String price;
 
@@ -41,7 +41,7 @@ public class HolidayTestDto implements Serializable {
      * @return the addTime
      */
 
-    public Long getAddTime() {
+    public String getAddTime() {
 
         return addTime;
     }
@@ -51,7 +51,7 @@ public class HolidayTestDto implements Serializable {
     /**
      * @param addTime the addTime to set
      */
-    public void setAddTime(Long addTime) {
+    public void setAddTime(String addTime) {
 
         this.addTime = addTime;
     }

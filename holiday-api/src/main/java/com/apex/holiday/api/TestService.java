@@ -33,4 +33,11 @@ public interface TestService {
      */
     void update(HolidayTestDto vo);
 
+    /**
+     * @author: yangcheng
+     * @createTime: 2018年4月11日 下午1:52:36
+     * @param appId void
+     */
+    void delete(String appId);
+
 }
