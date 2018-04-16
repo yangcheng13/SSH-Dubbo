@@ -19,7 +19,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.apex</groupId>
-			<artifactId>ysk-common</artifactId>
+			<artifactId>holiday-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
