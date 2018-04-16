@@ -6,5 +6,5 @@ holiday-consumer-trip/target/
 holiday-dao/target/
 holiday-domain/target/
 holiday-provider/target/
-ysk-common/target/
+holiday-common/target/
 target/
