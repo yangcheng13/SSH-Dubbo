@@ -1,45 +1,45 @@
-package com.apex.holiday.repository;
+/*
+ * Copyright @ 2018 com.apexsoft holiday-dao 下午2:16:50 All right reserved.
+ */
+package com.apex.holiday.dao;
 
-import java.io.Serializable;
 import java.util.List;
+import com.apex.holiday.domain.HolidayTest;
 
 /**
  * @desc: holiday-dao
  * @author: yangcheng
- * @createTime: 2018年4月2日 下午3:56:12
+ * @createTime: 2018年4月11日 下午2:16:50
  * @version: v1.0
- * @param <T> T
- * @param <PK> PK
  */
-interface IDomainRepository<T, PK extends Serializable> {
-
+public interface HolidayDao {
     /**
      * @author: yangcheng
      * @createTime: 2018年4月2日 下午3:56:40
      * @param entity void
      */
-    void save(T entity);
+    void save(HolidayTest entity);
 
     /**
      * @author: yangcheng
      * @createTime: 2018年4月2日 下午3:56:42
      * @param pk void
      */
-    void delete(PK pk);
+    void deleteById(String id);
 
     /**
      * @author: yangcheng
      * @createTime: 2018年4月2日 下午3:56:45
-     * @param hql String
-     * @param param Object[]
-     * @return List<T>
+     * @return List<HolidayTest>
      */
-    List<T> find(String hql, Object[] param);
+    List<HolidayTest> loadAll();
 
     /**
      * @author: yangcheng
      * @createTime: 2018年4月8日 下午5:10:06
      * @param entity void
      */
-    void update(T entity);
+    void update(HolidayTest entity);
+
 }
+

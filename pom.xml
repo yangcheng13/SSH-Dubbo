@@ -319,7 +319,7 @@
 	</repositories>
 
 	<modules>
-		<module>ysk-common</module>
+		<module>holiday-common</module>
 		<module>holiday-domain</module>
 		<module>holiday-dao</module>
 		<module>holiday-api</module>

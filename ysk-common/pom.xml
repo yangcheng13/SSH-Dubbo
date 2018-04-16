@@ -9,9 +9,9 @@
 		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../holiday</relativePath>
 	</parent>
-	<artifactId>ysk-common</artifactId>
+	<artifactId>holiday-common</artifactId>
 	<packaging>jar</packaging>
-	<name>ysk-common</name>
+	<name>holiday-common</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

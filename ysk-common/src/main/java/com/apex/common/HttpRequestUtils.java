@@ -11,7 +11,7 @@ import java.net.URLConnection;
 /**
  * Http请求工具类
  * 
- * @desc: ysk-common
+ * @desc: holiday-common
  * @author: yangcheng
  * @createTime: 2018年4月2日 下午4:01:52
  * @version: v1.0
@@ -109,5 +109,16 @@ public final class HttpRequestUtils {
         }
         return result;
     }
+    
+    /**  
+     * @author: yangcheng 
+     * @createTime: 2018年4月16日 下午2:26:28    
+     * @param args void  
+     */  
+    public static void main(String[] args) {
+        String res = sendGet("http://localhost:8080/holiday-provider/home");
+        System.out.println(res);
+    }
+    
 
 }

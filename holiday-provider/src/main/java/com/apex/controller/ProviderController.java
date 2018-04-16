@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.apex.holiday.api.TestService;
 import com.apex.holiday.dto.HolidayTestDto;
 import com.apex.holiday.dto.ResultVo;
+import com.google.gson.Gson;
 
 /**
  * @desc: holiday-provider
@@ -89,9 +90,9 @@ public class ProviderController {
      */
     @RequestMapping(value = "/editCity", method = RequestMethod.POST)
     @ResponseBody
-    public ResultVo<HolidayTestDto> editCity(@RequestBody HolidayTestDto vo) {
+    public ResultVo editCity(@RequestBody HolidayTestDto vo) {
         holidayTestService.update(vo);
-        return new ResultVo<HolidayTestDto>(true, vo);
+        return new ResultVo(true, new Gson().toJson(vo));
     }
 
 
@@ -100,9 +101,10 @@ public class ProviderController {
      * @createTime: 2018年4月8日 下午2:55:05
      * @return ResultVo<Object>
      */
-    @RequestMapping(value = "/delCity", method = RequestMethod.POST)
-    public ResultVo<Object> delCity(@RequestBody HolidayTestDto vo) {
-        return new ResultVo<Object>(true, "success");
+    @RequestMapping(value = "/delCity", method = RequestMethod.GET)
+    public ResultVo delCity(@RequestParam String appId) {
+        holidayTestService.delete(appId);
+        return new ResultVo(true, "success");
     }
 
 }
