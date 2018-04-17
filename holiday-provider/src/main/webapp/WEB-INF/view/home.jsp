@@ -9,9 +9,9 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <title>holiday-provider Home</title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/jscript"></script>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/jscript"></script>
     <script type="text/javascript">
       function modifyCity(id){
     	  var cityNameTd = $("tr#"+id+" td:eq(1)");
@@ -30,7 +30,7 @@
     	  var name = $("#newName").val();
           var price = $("#newPrice").val();
     	  $.ajax({
-    		  url : "/holiday-provider/editCity",
+    		  url : "${pageContext.request.contextPath}/editCity",
     		  type : "POST",
     		  contentType : "application/json;charset=utf-8",
     		  data : JSON.stringify({"appId":appId,"price":price,"city":name}),	 

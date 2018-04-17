@@ -9,9 +9,9 @@
 <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
     <title>holiday-cunsumer Home</title>
-    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-    <script src="js/jquery.min.js" type="text/javascript"></script>
-    <script src="js/bootstrap.min.js" type="text/jscript"></script>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <script src="${pageContext.request.contextPath}/js/jquery.min.js" type="text/javascript"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js" type="text/jscript"></script>
 </head>
 <body>
   <br/>

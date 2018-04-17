@@ -17,6 +17,6 @@
   </form>
 </div>
 <br />
-<a href="../home.jsp">返回</a>
+<a href="${pageContext.request.contextPath}/home">返回</a>
 </body>
 </html>
