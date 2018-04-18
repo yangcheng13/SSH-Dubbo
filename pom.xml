@@ -102,6 +102,12 @@
 			<artifactId>spring-aspects</artifactId>
 			<version>${version.spring}</version>
 		</dependency>
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+            <version>${version.spring}</version>
+        </dependency>
 		
 		<!-- apache 公共基础类 -->
 		<dependency>
