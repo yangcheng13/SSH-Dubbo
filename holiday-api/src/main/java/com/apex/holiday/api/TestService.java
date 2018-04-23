@@ -17,7 +17,7 @@ public interface TestService {
      * @createTime: 2018年4月2日 下午2:29:48
      * @return List<HolidayTestDto>
      */
-    List<HolidayTestDto> listCity();
+    List<HolidayTestDto> findAll();
 
     /**
      * @author: yangcheng

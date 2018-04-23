@@ -16,7 +16,7 @@ public class ServiceTest {
     private TestService holidayTestService;
     @Test
     public void test() {
-        System.out.println(holidayTestService.listCity());
+        System.out.println(holidayTestService.findAll());
     }
 
 

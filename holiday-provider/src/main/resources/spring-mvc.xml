@@ -26,7 +26,7 @@
 	
 	<!-- 拦截器 -->  
     <mvc:interceptors>  
-        <bean class="com.apex.filter.MyInteceptor" />  
+        <bean class="com.apex.intercept.MyInteceptor" />  
     </mvc:interceptors>        
 	<!-- 对静态资源文件的访问  --> 
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>

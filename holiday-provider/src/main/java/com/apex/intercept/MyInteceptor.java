@@ -1,7 +1,9 @@
-package com.apex.filter;
+package com.apex.intercept;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -13,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 public class MyInteceptor implements HandlerInterceptor {
 
+    private Logger logger = LoggerFactory.getLogger(MyInteceptor.class);
     @Override
     public void afterCompletion(HttpServletRequest arg0,
             HttpServletResponse arg1, Object arg2, Exception arg3)
@@ -25,6 +28,7 @@ public class MyInteceptor implements HandlerInterceptor {
     public void postHandle(HttpServletRequest arg0, HttpServletResponse arg1,
             Object arg2, ModelAndView arg3) throws Exception {
         // TODO Auto-generated method stub
+    
 
     }
 
@@ -32,6 +36,7 @@ public class MyInteceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest arg0, HttpServletResponse arg1,
             Object arg2) throws Exception {
         // TODO Auto-generated method stub
+        logger.info("controllor Intercept by HandlerInterceptor..."); 
 
         // check login status here
         return true;

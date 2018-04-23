@@ -67,7 +67,7 @@ public class ProviderController {
     @RequestMapping(value = "/home")
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView("home");
-        List<HolidayTestDto> dtos = holidayTestService.listCity();
+        List<HolidayTestDto> dtos = holidayTestService.findAll();
         mv.addObject("cityData", dtos);
         return mv;
     }

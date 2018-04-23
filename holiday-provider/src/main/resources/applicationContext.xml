@@ -3,6 +3,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
         http://www.springframework.org/schema/context
@@ -24,7 +25,19 @@
 	<!--********************************************配置hibernate******************************************** -->
 
 	<!--扫描配置文件(这里指向的是之前配置的那个config.properties) -->
+	<!--
 	<context:property-placeholder location="classpath:config.properties" />
+	-->
+	 <!-- 引入配置文件-->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:config.properties</value>                
+                <value>classpath:redis.properties</value>            
+            </list>
+        </property>
+    </bean>
 
 	<!--配置数据源 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
@@ -57,6 +70,40 @@
 	 <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    
+    
+    <!-- jedis 配置 -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="${redis.maxIdle}"/>
+        <property name="maxTotal" value="${redis.maxActive}" />  
+        <property name="maxWaitMillis" value="${redis.maxWait}"/>
+        <property name="testOnBorrow" value="${redis.testOnBorrow}"/>
+    </bean>
+    <!-- redis服务器中心 -->
+    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="poolConfig" ref="poolConfig"/>
+        <property name="port" value="${redis.port}"/>
+        <property name="hostName" value="${redis.host}"/>
+        <property name="password" value="${redis.password}"/>
+        <property name="timeout" value="${redis.timeout}"></property>
+    </bean>
+    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="keySerializer">
+            <bean class="org.springframework.data.redis.serializer.StringRedisSerializer"/>
+        </property>
+        <property name="valueSerializer">
+            <bean class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"/>
+        </property>
+    </bean>
+
+    <!-- cache配置 -->
+    <bean id="methodCacheInterceptor" class="com.apex.intercept.MethodCacheInterceptor">
+        <property name="redisUtil" ref="redisUtil"/>
+    </bean>
+    <bean id="redisUtil" class="com.apex.util.RedisUtil">
+        <property name="redisTemplate" ref="redisTemplate"/>
+    </bean>
 
 	<!-- 事物管理器配置 -->
 	<bean id="transactionManager"
@@ -66,6 +113,16 @@
 	
 	<!-- 注解实现事务 -->  
     <tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true" /> 
+    
+    <aop:config>
+        <!--将service包下的所有find开头的方法加入拦截
+        去掉find则加入所有方法
+        -->
+        <aop:pointcut id="controllerMethodPointcut" expression="
+        execution(* com.apex.holiday.provider..*.find*(..))"/>
+        <aop:advisor advice-ref="methodCacheInterceptor" pointcut-ref="controllerMethodPointcut"/>
+
+    </aop:config>
 	
 	<import resource="dubbo-provider.xml"/>
 </beans>

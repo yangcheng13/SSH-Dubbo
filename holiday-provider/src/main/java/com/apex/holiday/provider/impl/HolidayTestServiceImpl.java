@@ -27,7 +27,7 @@ public class HolidayTestServiceImpl implements TestService {
     private HolidayDao holidayDao;
 
     @Override
-    public List<HolidayTestDto> listCity() {
+    public List<HolidayTestDto> findAll() {
         List<HolidayTestDto> dtos = new ArrayList<>();
         List<HolidayTest> list = holidayDao.loadAll();
         for (HolidayTest item : list) {
