@@ -1,4 +1,4 @@
-package com.apex.util;
+package com.apex.holiday.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -106,6 +106,7 @@ public class RedisUtil {
 
     
     /**  
+     * 写入（带失效时间）
      * @author: yangcheng 
      * @createTime: 2018年4月23日 上午11:35:45    
      * @param key String

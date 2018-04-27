@@ -1,10 +1,10 @@
-package com.apex.intercept;
+package com.apex.holiday.intercept;
 
-import com.apex.util.RedisUtil;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import com.apex.holiday.util.RedisUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +78,7 @@ public class MethodCacheInterceptor implements MethodInterceptor {
         try {
             // 判断是否有缓存
             if (redisUtil.exists(key)) {
+                logger.info("******get value from redis, redisKey: " + key);
                 return redisUtil.get(key);
             }
             // 写入缓存
