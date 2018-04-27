@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.apex.holiday.api.TestService;
 import com.apex.holiday.dto.HolidayTestDto;
 import com.apex.holiday.dto.ResultVo;
+import com.apex.holiday.util.RedisUtil;
 import com.google.gson.Gson;
 
 /**
@@ -33,6 +34,8 @@ public class ProviderController {
      */
     @Autowired
     private TestService holidayTestService;
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * @author: yangcheng
@@ -55,6 +58,7 @@ public class ProviderController {
         vo.setCity(city);
         vo.setPrice(price);
         holidayTestService.add(vo);
+        redisUtil.removePattern("*find*");
         resp.sendRedirect("home");
         return null;
     }
@@ -92,6 +96,7 @@ public class ProviderController {
     @ResponseBody
     public ResultVo editCity(@RequestBody HolidayTestDto vo) {
         holidayTestService.update(vo);
+        redisUtil.removePattern("*find*");
         return new ResultVo(true, new Gson().toJson(vo));
     }
 
@@ -104,6 +109,7 @@ public class ProviderController {
     @RequestMapping(value = "/delCity", method = RequestMethod.GET)
     public ResultVo delCity(@RequestParam String appId) {
         holidayTestService.delete(appId);
+        redisUtil.removePattern("*find*");
         return new ResultVo(true, "success");
     }
 
