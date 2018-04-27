@@ -1,5 +1,6 @@
 package com.apex.holiday.domain;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,12 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "holiday_test")
 @DynamicInsert(true)
 @DynamicUpdate(true)
-public class HolidayTest {
+public class HolidayTest implements Serializable {
+
+    /**
+     * serialVersionUID
+     */
+    private static final long serialVersionUID = 1281996921827366551L;
 
     /**
      * NUM_60

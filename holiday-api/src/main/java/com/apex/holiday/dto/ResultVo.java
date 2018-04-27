@@ -9,27 +9,20 @@ package com.apex.holiday.dto;
  * @createTime: 2018年4月8日 下午12:00:04
  * @version: v1.0
  */
-public class ResultVo<T> {
+public class ResultVo {
 
     private boolean success;// 是否成功标志
 
-    private T data;// 成功时返回的数据
-
-    private String error;// 错误信息
+    private String data;// 成功时返回的数据
 
     public ResultVo() {}
 
     // 成功时的构造器
-    public ResultVo(boolean success, T data) {
+    public ResultVo(boolean success, String data) {
         this.success = success;
         this.data = data;
     }
 
-    // 错误时的构造器
-    public ResultVo(boolean success, String error) {
-        this.success = success;
-        this.error = error;
-    }
 
     /**
      * @return the success
@@ -52,7 +45,7 @@ public class ResultVo<T> {
      * @return the data
      */
 
-    public T getData() {
+    public String getData() {
 
         return data;
     }
@@ -60,27 +53,12 @@ public class ResultVo<T> {
     /**
      * @param data the data to set
      */
-    public void setData(T data) {
+    public void setData(String data) {
 
         this.data = data;
     }
 
-    /**
-     * @return the error
-     */
 
-    public String getError() {
-
-        return error;
-    }
-
-    /**
-     * @param error the error to set
-     */
-    public void setError(String error) {
-
-        this.error = error;
-    }
 
 }
 

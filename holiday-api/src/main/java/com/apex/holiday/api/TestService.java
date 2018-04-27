@@ -17,7 +17,7 @@ public interface TestService {
      * @createTime: 2018年4月2日 下午2:29:48
      * @return List<HolidayTestDto>
      */
-    List<HolidayTestDto> listCity();
+    List<HolidayTestDto> findAll();
 
     /**
      * @author: yangcheng
@@ -32,5 +32,12 @@ public interface TestService {
      * @param vo void
      */
     void update(HolidayTestDto vo);
+
+    /**
+     * @author: yangcheng
+     * @createTime: 2018年4月11日 下午1:52:36
+     * @param appId void
+     */
+    void delete(String appId);
 
 }

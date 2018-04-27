@@ -1,13 +1,17 @@
 package com.apex.holiday.provider.impl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.apex.holiday.api.TestService;
+import com.apex.holiday.dao.HolidayDao;
 import com.apex.holiday.domain.HolidayTest;
 import com.apex.holiday.dto.HolidayTestDto;
-import com.apex.holiday.repository.HolidayTestRepository;
 
 /**
  * @desc: holiday-provider
@@ -16,19 +20,20 @@ import com.apex.holiday.repository.HolidayTestRepository;
  * @version: v1.0
  */
 @Service("holidayTestService")
+@Transactional(readOnly = false, propagation = Propagation.REQUIRES_NEW)
 public class HolidayTestServiceImpl implements TestService {
 
     @Autowired
-    private HolidayTestRepository holidayTestRepository;
+    private HolidayDao holidayDao;
 
     @Override
-    public List<HolidayTestDto> listCity() {
+    public List<HolidayTestDto> findAll() {
         List<HolidayTestDto> dtos = new ArrayList<>();
-        List<HolidayTest> list =
-                holidayTestRepository.find("from HolidayTest", null);
+        List<HolidayTest> list = holidayDao.loadAll();
         for (HolidayTest item : list) {
             HolidayTestDto dto = new HolidayTestDto();
-            dto.setAddTime(item.getAddTime());
+            dto.setAddTime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+                    .format(new Date(item.getAddTime())));
             dto.setAppId(item.getAppId());
             dto.setCity(item.getCity());
             dto.setPrice(item.getPrice());
@@ -44,7 +49,7 @@ public class HolidayTestServiceImpl implements TestService {
         // holidayTest.setAppId(vo.getAppId());
         holidayTest.setCity(vo.getCity());
         holidayTest.setPrice(vo.getPrice());
-        holidayTestRepository.save(holidayTest);
+        holidayDao.save(holidayTest);
 
     }
 
@@ -54,8 +59,13 @@ public class HolidayTestServiceImpl implements TestService {
         holidayTest.setAppId(vo.getAppId());
         holidayTest.setCity(vo.getCity());
         holidayTest.setPrice(vo.getPrice());
-        holidayTestRepository.update(holidayTest);
+        holidayDao.update(holidayTest);
 
+    }
+
+    @Override
+    public void delete(String appId) {
+        holidayDao.deleteById(appId);
     }
 
 }
