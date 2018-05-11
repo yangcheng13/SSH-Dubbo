@@ -22,7 +22,8 @@
 		<property name="prefix" value="/WEB-INF/view/" />      <!-- 前缀 -->
 		<property name="suffix" value=".jsp" />   <!-- 后缀 -->
 	</bean>
-	
+	<!-- 视图控制器 -->
+	<mvc:view-controller path="/" view-name="/home"/>
 	<!-- 拦截器 -->  
     <mvc:interceptors>  
         <bean class="com.apex.holiday.intercept.MyInteceptor" />  

@@ -27,7 +27,7 @@
     <!-- content -->
     <div id="content">
         <ul class="nav">
-            <li class="home"><a href="${pageContext.request.contextPath }/index">Home Page</a></li>
+            <li class="home"><a href="${pageContext.request.contextPath }/home">Home Page</a></li>
             <li class="site_map"><a href="#">Site Map</a></li>
             <li class="search"><a href="#">Website Search</a></li>
         </ul>
